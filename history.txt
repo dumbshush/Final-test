@@ -1,0 +1,28 @@
+1019  sudo apt update
+1020  sudo apt install git -y
+1021  git clone https://github.com/dumbshush/Final-test.git
+1022  cd Final-test/
+1025  echo -e "Dogs\nCats\nHamsters" > pets.txt
+1026  cat pets.txt
+1027  echo -e "Horses\nCamels\nDonkeys" > pack_animals.txt
+1028  cat pets.txt
+1029  cat pack_animals.txt
+1030  cat --help
+1031  cat pets.txt pack_animals.txt > Friends_of_Man.txt
+1032  cat Friends_of_Man.txt
+1033  sudo mkdir animals
+1034  ll
+1035  mv Friends_of_Man.txt animals/
+1036  sudo mv Friends_of_Man.txt animals/
+1037  ll
+1038  git add .
+1042  git config --global user.name "Shush"
+1043  git config --global user.email "woodblack63@gmail.com"
+1044  git commit -m "Stage 1 and 2. Created animals in Linux."
+1046  git push origin main
+1071  wget http://archive.ubuntu.com/ubuntu/pool/main/h/hello/hello_2.10-1_i386.deb
+1072  sudo dpkg -i hello_2.10-1_i386.deb
+1073  hello
+1074  sudo dpkg -r hello
+1075  history > history.txt
+
