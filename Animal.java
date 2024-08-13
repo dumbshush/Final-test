@@ -1,14 +1,20 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 
-public class Animal {
+class Animal {
     private String name;
     private LocalDate birth;
-    private String command;
+    private String type;
+    private ArrayList<String> commands;
 
-    public Animal(String name, LocalDate birth, String command){
+    public Animal(String name, LocalDate birth, String type, String command){
         this.name = name;
         this.birth = birth;
-        this.command = command;
+        this.type = type;
+        this.commands = new ArrayList<>();
+        if (command != null) {
+            this.commands.add(command);
+        }
     }
 
     public String getName() {
@@ -27,17 +33,29 @@ public class Animal {
         this.birth = birth;
     }
 
-    public String getCommand() {
-        return command;
+    public String getType() {
+        return type;
     }
 
-    public void setCommand(String command) {
-        this.command = command;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public ArrayList<String> getCommands() {
+        return commands;
+    }
+
+    public void setCommands(ArrayList<String> commands) {
+        this.commands = commands;
+    }
+
+    public void addCommands(String command) {
+        this.commands.add(command);
     }
 
     @Override
     public String toString() {
-        return "Animal [name=" + name + ", birth=" + birth + ", command=" + command + "]";
+        return "Animal [name=" + name + ", birth=" + birth + ", type=" + type + ", commands=" + commands + "]";
     }
     
 }
