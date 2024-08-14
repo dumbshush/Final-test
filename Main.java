@@ -8,7 +8,7 @@ public class Main {
 
         ArrayList<Animal> anml = new ArrayList<>();
         AnimalRegistry animalregistry = new AnimalRegistry();
-        // animalregistry.initAnimals(anml);
+        Counter counter = new Counter();
 
         boolean start = true;
 
@@ -51,26 +51,39 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.println("Введите имя животного: ");
-                    String newName = scanner.nextLine();
-                    System.out.println("Введите дату рождения(год-месяц-день): ");
-                    String newBirth = scanner.nextLine();
-                    LocalDate birth = LocalDate.parse(newBirth);
-                    System.out.println("Что это за животное? ");
-                    String newType = scanner.nextLine().toLowerCase();
-                    System.out.println("Что за команды оно знает? ");
-                    String newCommand = scanner.nextLine();
-                    Animal newAnimal;
+                    try {
+                        System.out.println("Введите имя животного: ");
+                        String newName = scanner.nextLine();
+                        System.out.println("Введите дату рождения(год-месяц-день): ");
+                        String newBirth = scanner.nextLine();
+                        LocalDate birth = LocalDate.parse(newBirth);
+                        System.out.println("Что это за животное? ");
+                        String newType = scanner.nextLine().toLowerCase();
+                        System.out.println("Что за команды оно знает? ");
+                        String newCommand = scanner.nextLine();
 
-                    if (newType.equals("cat") || newType.equals("dog") || newType.equals("hamster")) {
-                        newAnimal = new DomesticAnimal(newName, birth, newType, newCommand);
-                    } else if (newType.equals("horse") || newType.equals("camel") || newType.equals("donkey")) {
-                        newAnimal = new PackAnimal(newName, birth, newType, newCommand);
-                    } else {
-                        newAnimal = new Animal(newName, birth, newType, newCommand); 
+                        if (newName.isEmpty() || birth == null || newType.isEmpty()) {
+                            System.out.println("Пожалуйста, заполните все поля!");
+                            continue;
+                        }
+
+                        Animal newAnimal;
+
+                        if (newType.equals("cat") || newType.equals("dog") || newType.equals("hamster")) {
+                            newAnimal = new DomesticAnimal(newName, birth, newType, newCommand);
+                        } else if (newType.equals("horse") || newType.equals("camel") || newType.equals("donkey")) {
+                            newAnimal = new PackAnimal(newName, birth, newType, newCommand);
+                        } else {
+                            newAnimal = new Animal(newName, birth, newType, newCommand); 
+                        }
+
+                        animalregistry.addAnimal(newAnimal);
+                        counter.add();
+                        System.out.println("Кол-во заведенных животных: " + counter.toString());
+
+                    } catch (Exception e) {
+                        System.out.println("Ошибка: " + e.getMessage());
                     }
-
-                    animalregistry.addAnimal(newAnimal);
                     break;
                 case 4:
                     System.out.println("Введите имя животного: ");
@@ -93,6 +106,7 @@ public class Main {
             }        
         }
         scanner.close();
+        counter.close();
         System.out.println("До свидания!");    
     }
 
